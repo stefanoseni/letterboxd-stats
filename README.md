@@ -71,6 +71,28 @@ Christopher Nolan — avg 4.22★ across 9 films
 
    The first run will be slower since every movie is looked up on TMDB. Results are cached in `data/cache.json` so future runs are instant.
 
+## Troubleshooting
+
+**Stats are all empty (directors, actors, genres, time watched show nothing or 0)**
+
+This means none of your movies matched on TMDB — almost always caused by a bad `TMDB_API_KEY` in `.env`. Check for:
+- An accidentally duplicated line, e.g. `TMDB_API_KEY=TMDB_API_KEY=abc123` (easy to do if you paste over the placeholder instead of replacing it)
+- Extra quotes, spaces, or a trailing newline around the key
+
+Quickest fix — overwrite `.env` directly from the terminal instead of editing it by hand:
+```bash
+echo "TMDB_API_KEY=your_actual_key_here" > .env
+```
+Then delete the cache and re-run, since a failed run caches "no match" for every movie:
+```bash
+rm data/cache.json
+npm start
+```
+
+**"Missing TMDB_API_KEY" error on startup**
+
+Means `.env` doesn't exist yet, or wasn't saved as plain text in the project's root folder. Run `cp .env.example .env` from inside the project folder, then add your key.
+
 ## Tech
 
 - Node.js (built-in `fetch`, no extra HTTP library)
