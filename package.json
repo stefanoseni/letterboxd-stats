@@ -1,0 +1,23 @@
+{
+  "name": "letterboxd-stats",
+  "version": "1.0.0",
+  "description": "Free, open-source CLI tool that generates stats from your Letterboxd export data — no subscription required.",
+  "main": "stats.js",
+  "type": "module",
+  "scripts": {
+    "start": "node stats.js"
+  },
+  "keywords": [
+    "letterboxd",
+    "movies",
+    "stats",
+    "tmdb",
+    "cli"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "papaparse": "^5.4.1"
+  }
+}
